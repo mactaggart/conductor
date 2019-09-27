@@ -1,5 +1,5 @@
 syntax = "proto3";
-package conductor.grpc.tasks;
+package conductor.service;
 
 import "model/taskexeclog.proto";
 import "model/taskresult.proto";
@@ -7,7 +7,7 @@ import "model/task.proto";
 
 option java_package = "com.netflix.conductor.grpc";
 option java_outer_classname = "TaskServicePb";
-option go_package = "github.com/netflix/conductor/client/gogrpc/conductor/grpc/tasks";
+option go_package = "github.com/netflix/conductor/client/gogrpc/conductor/service";
 
 service TaskService {
     // GET /poll/{tasktype}

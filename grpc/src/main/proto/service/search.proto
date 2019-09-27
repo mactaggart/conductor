@@ -1,9 +1,9 @@
 syntax = "proto3";
-package conductor.grpc.search;
+package conductor.service;
 
 option java_package = "com.netflix.conductor.grpc";
 option java_outer_classname = "SearchPb";
-option go_package = "github.com/netflix/conductor/client/gogrpc/conductor/grpc/search";
+option go_package = "github.com/netflix/conductor/client/gogrpc/conductor/service";
 
 message Request {
     int32 start = 1;

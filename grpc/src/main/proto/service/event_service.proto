@@ -1,11 +1,11 @@
 syntax = "proto3";
-package conductor.grpc.events;
+package conductor.service;
 
 import "model/eventhandler.proto";
 
 option java_package = "com.netflix.conductor.grpc";
 option java_outer_classname = "EventServicePb";
-option go_package = "github.com/netflix/conductor/client/gogrpc/conductor/grpc/events";
+option go_package = "github.com/netflix/conductor/client/gogrpc/conductor/service";
 
 service EventService {
     // POST /

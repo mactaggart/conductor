@@ -1,7 +1,7 @@
 syntax = "proto3";
-package conductor.grpc.workflows;
+package conductor.service;
 
-import "grpc/search.proto";
+import "service/search.proto";
 import "model/workflow.proto";
 import "model/workflowsummary.proto";
 import "model/skiptaskrequest.proto";
@@ -10,7 +10,7 @@ import "model/rerunworkflowrequest.proto";
 
 option java_package = "com.netflix.conductor.grpc";
 option java_outer_classname = "WorkflowServicePb";
-option go_package = "github.com/netflix/conductor/client/gogrpc/conductor/grpc/workflows";
+option go_package = "github.com/netflix/conductor/client/gogrpc/conductor/service";
 
 service WorkflowService {
     // POST /
@@ -56,8 +56,8 @@ service WorkflowService {
     rpc TerminateWorkflow(TerminateWorkflowRequest) returns (TerminateWorkflowResponse);
 
     // GET /search
-    rpc Search(conductor.grpc.search.Request) returns (WorkflowSummarySearchResult);
-    rpc SearchByTasks(conductor.grpc.search.Request) returns (WorkflowSummarySearchResult);
+    rpc Search(conductor.service.Request) returns (WorkflowSummarySearchResult);
+    rpc SearchByTasks(conductor.service.Request) returns (WorkflowSummarySearchResult);
 }
 
 message StartWorkflowResponse {

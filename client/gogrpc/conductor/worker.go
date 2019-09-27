@@ -9,7 +9,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/netflix/conductor/client/gogrpc/conductor/grpc/tasks"
+	"github.com/netflix/conductor/client/gogrpc/conductor/service"
 	"github.com/netflix/conductor/client/gogrpc/conductor/model"
 )
 
