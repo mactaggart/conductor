@@ -1,7 +1,7 @@
 package gogrpc
 
 import (
-	"github.com/netflix/conductor/client/gogrpc/conductor/service"
+	"github.com/mactaggart/conductor/client/gogrpc/service"
 	grpc "google.golang.org/grpc"
 )
 

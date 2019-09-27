@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/netflix/conductor/client/gogrpc/service"
-	"github.com/netflix/conductor/client/gogrpc/model"
+	"github.com/mactaggart/conductor/client/gogrpc/service"
+	"github.com/mactaggart/conductor/client/gogrpc/model"
 	"google.golang.org/grpc"
 
 	"github.com/stretchr/testify/assert"

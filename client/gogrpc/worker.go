@@ -9,8 +9,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/netflix/conductor/client/gogrpc/service"
-	"github.com/netflix/conductor/client/gogrpc/model"
+	"github.com/mactaggart/conductor/client/gogrpc/service"
+	"github.com/mactaggart/conductor/client/gogrpc/model"
 )
 
 // An Executor is a struct that executes the logic required to resolve
