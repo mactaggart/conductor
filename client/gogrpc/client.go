@@ -1,4 +1,4 @@
-package conductor
+package gogrpc
 
 import (
 	"github.com/netflix/conductor/client/gogrpc/conductor/service"

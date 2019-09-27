@@ -1,4 +1,4 @@
-package conductor
+package gogrpc
 
 import (
 	"context"
@@ -10,9 +10,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/netflix/conductor/client/gogrpc/conductor/grpc/tasks"
-
-	"github.com/netflix/conductor/client/gogrpc/conductor/model"
+	"github.com/netflix/conductor/client/gogrpc/service"
+	"github.com/netflix/conductor/client/gogrpc/model"
 	"google.golang.org/grpc"
 
 	"github.com/stretchr/testify/assert"

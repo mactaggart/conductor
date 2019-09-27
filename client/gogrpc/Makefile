@@ -23,7 +23,7 @@ test:
 
 # Helpers
 $(SERVICES): %.pb.go: %.proto
-	$(PROTOC) -I $(PROTO_SRC) $< --go_out=plugins=grpc,paths=source_relative,import_path=conductor:conductor
+	$(PROTOC) -I $(PROTO_SRC) $< --go_out=plugins=grpc,paths=source_relative,import_path=conductor:.
 
 models:
-	$(PROTOC) -I $(PROTO_SRC) $(PROTO_SRC)/model/*.proto --go_out=paths=source_relative,import_path=conductor:conductor
+	$(PROTOC) -I $(PROTO_SRC) $(PROTO_SRC)/model/*.proto --go_out=paths=source_relative,import_path=conductor:.

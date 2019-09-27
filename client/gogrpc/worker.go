@@ -1,4 +1,4 @@
-package conductor
+package gogrpc
 
 import (
 	"context"
@@ -9,8 +9,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/netflix/conductor/client/gogrpc/conductor/service"
-	"github.com/netflix/conductor/client/gogrpc/conductor/model"
+	"github.com/netflix/conductor/client/gogrpc/service"
+	"github.com/netflix/conductor/client/gogrpc/model"
 )
 
 // An Executor is a struct that executes the logic required to resolve

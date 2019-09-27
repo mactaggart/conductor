@@ -3,7 +3,7 @@ package conductor.service;
 
 option java_package = "com.netflix.conductor.grpc";
 option java_outer_classname = "SearchPb";
-option go_package = "github.com/mactaggart/conductor/client/gogrpc/conductor/service";
+option go_package = "github.com/mactaggart/conductor/client/gogrpc/service";
 
 message Request {
     int32 start = 1;
