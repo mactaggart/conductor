@@ -6,7 +6,7 @@ import "model/workflowdef.proto";
 
 option java_package = "com.netflix.conductor.grpc";
 option java_outer_classname = "MetadataServicePb";
-option go_package = "github.com/netflix/conductor/client/gogrpc/conductor/service";
+option go_package = "github.com/mactaggart/conductor/client/gogrpc/conductor/service";
 
 service MetadataService {
     // POST /workflow
