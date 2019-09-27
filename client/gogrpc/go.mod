@@ -1,4 +1,4 @@
-module github.com/netflix/conductor/client/gogrpc
+module github.com/mactaggart/conductor/client/gogrpc
 
 require (
 	github.com/stretchr/testify v1.2.1
