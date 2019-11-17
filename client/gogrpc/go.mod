@@ -1,4 +1,4 @@
-module github.com/netflix/conductor/client/gogrpc
+module github.com/mactaggart/conductor/client/gogrpc
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
