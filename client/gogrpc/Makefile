@@ -10,11 +10,8 @@ SERVICES = \
     $(PROTO_SRC)/grpc/task_service.pb.go \
     $(PROTO_SRC)/grpc/workflow_service.pb.go
 
-USER_ID := $(shell id -u)
-GROUP_ID := $(shell id -g)
 CONDUCTOR_ROOT = /go/src/github.com/netflix/conductor
 PROTOC = docker run --rm -it \
-	--user $(USER_ID):$(GROUP_ID) \
 	-v '$(PWD)/../..':'$(CONDUCTOR_ROOT)' \
 	-w $(CONDUCTOR_ROOT)/client/gogrpc \
 	znly/protoc:0.3.0 
