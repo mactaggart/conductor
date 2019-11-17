@@ -1,4 +1,4 @@
-module github.com/mactaggart/conductor/client/gogrpc/v3c
+module github.com/mactaggart/conductor/client/gogrpc/v3
 
 require (
 	github.com/golang/protobuf v1.3.1
