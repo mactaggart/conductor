@@ -1,6 +1,6 @@
-// +build tools
+// +build gogrpc
 
-package tools
+package gogrpc
 
 import (
 	_ "github.com/golang/protobuf/protoc-gen-go"
