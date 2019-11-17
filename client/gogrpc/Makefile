@@ -10,7 +10,7 @@ SERVICES = \
     $(PROTO_SRC)/grpc/task_service.pb.go \
     $(PROTO_SRC)/grpc/workflow_service.pb.go
 
-CONDUCTOR_ROOT = /go/src/github.com/netflix/conductor
+CONDUCTOR_ROOT = /go/src/github.com/mactaggart/conductor
 PROTOC = docker run --rm -it \
 	-v '$(PWD)/../..':'$(CONDUCTOR_ROOT)' \
 	-w $(CONDUCTOR_ROOT)/client/gogrpc \

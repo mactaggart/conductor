@@ -10,9 +10,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/netflix/conductor/client/gogrpc/conductor/grpc/tasks"
+	"github.com/mactaggart/conductor/client/gogrpc/conductor/grpc/tasks"
 
-	"github.com/netflix/conductor/client/gogrpc/conductor/model"
+	"github.com/mactaggart/conductor/client/gogrpc/conductor/model"
 	"google.golang.org/grpc"
 
 	"github.com/stretchr/testify/assert"
@@ -78,7 +78,7 @@ func (s *fakeTaskService) BatchPoll(context.Context, *tasks.BatchPollRequest, ..
 }
 
 func (s *fakeTaskService) GetPendingTaskForWorkflow(context.Context, *tasks.PendingTaskRequest, ...grpc.CallOption) (*tasks.PendingTaskResponse, error) {
-    return nil, ErrNotImplemented
+	return nil, ErrNotImplemented
 }
 
 func (s *fakeTaskService) GetTasksInProgress(ctx context.Context, in *tasks.TasksInProgressRequest, opts ...grpc.CallOption) (*tasks.TasksInProgressResponse, error) {
@@ -98,29 +98,28 @@ func (s *fakeTaskService) AddLog(ctx context.Context, in *tasks.AddLogRequest, o
 }
 
 func (s *fakeTaskService) GetQueueAllInfo(ctx context.Context, in *tasks.QueueAllInfoRequest, opts ...grpc.CallOption) (*tasks.QueueAllInfoResponse, error) {
-    return nil, ErrNotImplemented
+	return nil, ErrNotImplemented
 }
 
 func (s *fakeTaskService) GetQueueInfo(ctx context.Context, in *tasks.QueueInfoRequest, opts ...grpc.CallOption) (*tasks.QueueInfoResponse, error) {
-    return nil, ErrNotImplemented
+	return nil, ErrNotImplemented
 }
 
 func (s *fakeTaskService) GetTaskLogs(ctx context.Context, in *tasks.GetTaskLogsRequest, opts ...grpc.CallOption) (*tasks.GetTaskLogsResponse, error) {
-    return nil, ErrNotImplemented
+	return nil, ErrNotImplemented
 }
 
 func (s *fakeTaskService) GetTask(ctx context.Context, in *tasks.GetTaskRequest, opts ...grpc.CallOption) (*tasks.GetTaskResponse, error) {
-    return nil, ErrNotImplemented
+	return nil, ErrNotImplemented
 }
 
 func (s *fakeTaskService) RemoveTaskFromQueue(ctx context.Context, in *tasks.RemoveTaskRequest, opts ...grpc.CallOption) (*tasks.RemoveTaskResponse, error) {
-    return nil, ErrNotImplemented
+	return nil, ErrNotImplemented
 }
 
 func (s *fakeTaskService) GetQueueSizesForTasks(ctx context.Context, in *tasks.QueueSizesRequest, opts ...grpc.CallOption) (*tasks.QueueSizesResponse, error) {
-    return nil, ErrNotImplemented
+	return nil, ErrNotImplemented
 }
-
 
 type fakeTaskClient struct {
 	tasks *fakeTaskService

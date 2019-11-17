@@ -10,7 +10,7 @@ Go must be installed and GOPATH env variable set.
 ## Install
 
 ```shell
-go get github.com/netflix/conductor/client/go
+go get github.com/mactaggart/conductor/client/gogrpc
 ```
 This will create a Go project under $GOPATH/src and download any dependencies.
 

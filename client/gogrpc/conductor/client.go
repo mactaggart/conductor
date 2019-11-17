@@ -1,9 +1,9 @@
 package conductor
 
 import (
-	"github.com/netflix/conductor/client/gogrpc/conductor/grpc/tasks"
-	"github.com/netflix/conductor/client/gogrpc/conductor/grpc/metadata"
-	"github.com/netflix/conductor/client/gogrpc/conductor/grpc/workflows"
+	"github.com/mactaggart/conductor/client/gogrpc/conductor/grpc/metadata"
+	"github.com/mactaggart/conductor/client/gogrpc/conductor/grpc/tasks"
+	"github.com/mactaggart/conductor/client/gogrpc/conductor/grpc/workflows"
 	grpc "google.golang.org/grpc"
 )
 
