@@ -1,5 +1,5 @@
 PROTO_SRC = ../../../grpc/src/main/proto
-PROTO_VERSION = 3.5.1
+PROTO_VERSION = 3.6.1
 
 BUILD_DIR = build
 BIN_DIR = $(BUILD_DIR)/bin

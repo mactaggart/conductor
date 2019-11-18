@@ -1,8 +1,9 @@
 syntax = "proto3";
 package conductor.proto;
 
+import "google/protobuf/any.proto";
 import "model/workflowtask.proto";
-import "google/protobuf/struct.proto";
+
 
 option java_package = "com.netflix.conductor.proto";
 option java_outer_classname = "WorkflowDefPb";
@@ -14,7 +15,7 @@ message WorkflowDef {
     int32 version = 3;
     repeated WorkflowTask tasks = 4;
     repeated string input_parameters = 5;
-    map<string, google.protobuf.Value> output_parameters = 6;
+    map<string, google.protobuf.Any> output_parameters = 6;
     string failure_workflow = 7;
     int32 schema_version = 8;
     bool restartable = 9;

@@ -1,7 +1,8 @@
 syntax = "proto3";
 package conductor.proto;
 
-import "google/protobuf/struct.proto";
+
+import "google/protobuf/any.proto";
 
 option java_package = "com.netflix.conductor.proto";
 option java_outer_classname = "TaskDefPb";
@@ -28,7 +29,7 @@ message TaskDef {
     int32 retry_delay_seconds = 9;
     int64 response_timeout_seconds = 10;
     int32 concurrent_exec_limit = 11;
-    map<string, google.protobuf.Value> input_template = 12;
+    map<string, google.protobuf.Any> input_template = 12;
     int32 rate_limit_per_frequency = 14;
     int32 rate_limit_frequency_in_seconds = 15;
     string isolation_group_id = 16;

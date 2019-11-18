@@ -2,7 +2,7 @@ syntax = "proto3";
 package conductor.proto;
 
 import "model/workflowdef.proto";
-import "google/protobuf/struct.proto";
+import "google/protobuf/any.proto";
 
 option java_package = "com.netflix.conductor.proto";
 option java_outer_classname = "StartWorkflowRequestPb";
@@ -12,7 +12,7 @@ message StartWorkflowRequest {
     string name = 1;
     int32 version = 2;
     string correlation_id = 3;
-    map<string, google.protobuf.Value> input = 4;
+    map<string, google.protobuf.Any> input = 4;
     map<string, string> task_to_domain = 5;
     WorkflowDef workflow_def = 6;
     string external_input_payload_storage_path = 7;

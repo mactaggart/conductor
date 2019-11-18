@@ -1,7 +1,7 @@
 syntax = "proto3";
 package conductor.proto;
 
-import "google/protobuf/struct.proto";
+
 import "google/protobuf/any.proto";
 
 option java_package = "com.netflix.conductor.proto";
@@ -13,14 +13,14 @@ message EventHandler {
         string name = 1;
         int32 version = 2;
         string correlation_id = 3;
-        map<string, google.protobuf.Value> input = 4;
+        map<string, google.protobuf.Any> input = 4;
         google.protobuf.Any input_message = 5;
         map<string, string> task_to_domain = 6;
     }
     message TaskDetails {
         string workflow_id = 1;
         string task_ref_name = 2;
-        map<string, google.protobuf.Value> output = 3;
+        map<string, google.protobuf.Any> output = 3;
         google.protobuf.Any output_message = 4;
         string task_id = 5;
     }

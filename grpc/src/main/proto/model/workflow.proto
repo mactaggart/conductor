@@ -1,9 +1,9 @@
 syntax = "proto3";
 package conductor.proto;
 
+import "google/protobuf/any.proto";
 import "model/workflowdef.proto";
 import "model/task.proto";
-import "google/protobuf/struct.proto";
 
 option java_package = "com.netflix.conductor.proto";
 option java_outer_classname = "WorkflowPb";
@@ -24,8 +24,8 @@ message Workflow {
     string parent_workflow_id = 4;
     string parent_workflow_task_id = 5;
     repeated Task tasks = 6;
-    map<string, google.protobuf.Value> input = 8;
-    map<string, google.protobuf.Value> output = 9;
+    map<string, google.protobuf.Any> input = 8;
+    map<string, google.protobuf.Any> output = 9;
     string workflow_type = 10;
     int32 version = 11;
     string correlation_id = 12;
