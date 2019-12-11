@@ -46,10 +46,9 @@ import java.util.Map;
  * @author visingh
  *
  */
-@Api(value="/tasks", produces=MediaType.APPLICATION_JSON, consumes=MediaType.APPLICATION_JSON, tags="Task Management")
+@Api(value="/tasks", tags="Task Management")
 @Path("/tasks")
 @Produces({ MediaType.APPLICATION_JSON })
-@Consumes({ MediaType.APPLICATION_JSON })
 @Singleton
 public class TaskResource {
 	private final TaskService taskService;
@@ -62,7 +61,8 @@ public class TaskResource {
 	@GET
 	@Path("/poll/{tasktype}")
 	@ApiOperation("Poll for a task of a certain type")
-	@Consumes({MediaType.WILDCARD})
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.WILDCARD)
 	public Task poll(@PathParam("tasktype") String taskType,
 					 @QueryParam("workerid") String workerId,
 					 @QueryParam("domain") String domain) {
@@ -72,7 +72,8 @@ public class TaskResource {
 	@GET
 	@Path("/poll/batch/{tasktype}")
 	@ApiOperation("batch Poll for a task of a certain type")
-	@Consumes({MediaType.WILDCARD})
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.WILDCARD)
 	public List<Task> batchPoll(@PathParam("tasktype") String taskType,
 								@QueryParam("workerid") String workerId,
 								@QueryParam("domain") String domain,
@@ -84,7 +85,8 @@ public class TaskResource {
 	@GET
 	@Path("/in_progress/{tasktype}")
 	@ApiOperation("Get in progress tasks. The results are paginated.")
-	@Consumes({MediaType.WILDCARD})
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.WILDCARD)
 	public List<Task> getTasks(@PathParam("tasktype") String taskType,
 							   @QueryParam("startKey") String startKey,
 							   @QueryParam("count") @DefaultValue("100") Integer count) {
@@ -94,7 +96,8 @@ public class TaskResource {
 	@GET
 	@Path("/in_progress/{workflowId}/{taskRefName}")
 	@ApiOperation("Get in progress task for a given workflow id.")
-	@Consumes({MediaType.WILDCARD})
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.WILDCARD)
 	public Task getPendingTaskForWorkflow(@PathParam("workflowId") String workflowId,
 										  @PathParam("taskRefName") String taskReferenceName) {
 		return taskService.getPendingTaskForWorkflow(workflowId, taskReferenceName);
@@ -110,7 +113,8 @@ public class TaskResource {
 	@POST
 	@Path("/{taskId}/ack")
 	@ApiOperation("Ack Task is received")
-	@Consumes({MediaType.WILDCARD})
+	@Produces({MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON})
+	@Consumes(MediaType.WILDCARD)
 	public String ack(@PathParam("taskId") String taskId,
 					  @QueryParam("workerid") String workerId) {
 		return taskService.ackTaskReceived(taskId, workerId);
@@ -119,6 +123,7 @@ public class TaskResource {
 	@POST
 	@Path("/{taskId}/log")
 	@ApiOperation("Log Task Execution Details")
+	@Consumes(MediaType.WILDCARD)
 	public void log(@PathParam("taskId") String taskId, String log) {
 		taskService.log(taskId, log);
 	}
@@ -126,6 +131,7 @@ public class TaskResource {
 	@GET
 	@Path("/{taskId}/log")
 	@ApiOperation("Get Task Execution Logs")
+	@Consumes(MediaType.WILDCARD)
 	public List<TaskExecLog> getTaskLogs(@PathParam("taskId") String taskId) {
 		return taskService.getTaskLogs(taskId);
 	}
@@ -133,6 +139,7 @@ public class TaskResource {
 	@GET
 	@Path("/{taskId}")
 	@ApiOperation("Get task by Id")
+	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.WILDCARD)
 	public Task getTask(@PathParam("taskId") String taskId) {
 		return taskService.getTask(taskId);
@@ -141,7 +148,7 @@ public class TaskResource {
 	@DELETE
 	@Path("/queue/{taskType}/{taskId}")
 	@ApiOperation("Remove Task from a Task type queue")
-	@Consumes({MediaType.WILDCARD})
+	@Consumes(MediaType.WILDCARD)
 	public void removeTaskFromQueue(@PathParam("taskType") String taskType,
 									@PathParam("taskId") String taskId) {
 		taskService.removeTaskFromQueue(taskType, taskId);
@@ -150,7 +157,8 @@ public class TaskResource {
 	@GET
 	@Path("/queue/sizes")
 	@ApiOperation("Get Task type queue sizes")
-	@Consumes({MediaType.WILDCARD})
+	@Consumes(MediaType.WILDCARD)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, Integer> size(@QueryParam("taskType") List<String> taskTypes) {
 		return taskService.getTaskQueueSizes(taskTypes);
 	}
@@ -158,7 +166,7 @@ public class TaskResource {
 	@GET
 	@Path("/queue/all/verbose")
 	@ApiOperation("Get the details about each queue")
-	@Consumes({MediaType.WILDCARD})
+	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, Map<String, Map<String, Long>>> allVerbose() {
 		return taskService.allVerbose();
 	}
@@ -166,7 +174,7 @@ public class TaskResource {
 	@GET
 	@Path("/queue/all")
 	@ApiOperation("Get the details about each queue")
-	@Consumes({MediaType.WILDCARD})
+	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, Long> all() {
 		return taskService.getAllQueueDetails();
 	}
@@ -174,7 +182,8 @@ public class TaskResource {
 	@GET
 	@Path("/queue/polldata")
 	@ApiOperation("Get the last poll data for a given task type")
-	@Consumes({MediaType.WILDCARD})
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.WILDCARD)
 	public List<PollData> getPollData(@QueryParam("taskType") String taskType) {
 		return taskService.getPollData(taskType);
 	}
@@ -182,7 +191,7 @@ public class TaskResource {
 	@GET
 	@Path("/queue/polldata/all")
 	@ApiOperation("Get the last poll data for all task types")
-	@Consumes(MediaType.WILDCARD)
+	@Produces(MediaType.APPLICATION_JSON)
 	public List<PollData> getAllPollData() {
 		return taskService.getAllPollData();
 	}
@@ -190,6 +199,7 @@ public class TaskResource {
 	@POST
 	@Path("/queue/requeue")
 	@ApiOperation("Requeue pending tasks for all the running workflows")
+	@Produces({ MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON })
 	public String requeue() {
 		return taskService.requeue();
 	}
@@ -197,8 +207,8 @@ public class TaskResource {
 	@POST
 	@Path("/queue/requeue/{taskType}")
 	@ApiOperation("Requeue pending tasks")
-	@Consumes(MediaType.WILDCARD)
 	@Produces({ MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON })
+	@Consumes(MediaType.WILDCARD)
 	public String requeuePendingTask(@PathParam("taskType") String taskType) {
 		return taskService.requeuePendingTask(taskType);
 	}
@@ -207,9 +217,9 @@ public class TaskResource {
 			notes="use sort options as sort=<field>:ASC|DESC e.g. sort=name&sort=workflowId:DESC." +
 					" If order is not specified, defaults to ASC")
 	@GET
-	@Consumes(MediaType.WILDCARD)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/search")
+	@Consumes(MediaType.WILDCARD)
 	public SearchResult<TaskSummary> search(@QueryParam("start") @DefaultValue("0") int start,
 											@QueryParam("size") @DefaultValue("100") int size,
 											@QueryParam("sort") String sort,
@@ -220,9 +230,12 @@ public class TaskResource {
 
 	@GET
 	@ApiOperation("Get the external uri where the task payload is to be stored")
-	@Consumes(MediaType.WILDCARD)
 	@Path("/externalstoragelocation")
-	public ExternalStorageLocation getExternalStorageLocation(@QueryParam("path") String path, @QueryParam("operation") String operation, @QueryParam("payloadType") String payloadType) {
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.WILDCARD)
+	public ExternalStorageLocation getExternalStorageLocation(@QueryParam("path") String path,
+															  @QueryParam("operation") String operation,
+															  @QueryParam("payloadType") String payloadType) {
 		return taskService.getExternalStorageLocation(path, operation, payloadType);
 	}
 }

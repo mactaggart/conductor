@@ -90,7 +90,7 @@ public class MetadataResource {
 	@POST
 	@Path("/taskdefs")
 	@ApiOperation("Create new task definition(s)")
-	public void registerTaskDef(List<TaskDef> taskDefs) {
+	public void registerTaskDefs(List<TaskDef> taskDefs) {
 		metadataService.registerTaskDef(taskDefs);
 	}
 	

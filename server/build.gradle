@@ -47,7 +47,7 @@ dependencies {
     compile "com.google.inject.extensions:guice-servlet:${revGuiceServlet}"
 
     //Swagger
-    compile "io.swagger:swagger-jersey-jaxrs:${revSwagger}"
+    compile "io.swagger:swagger-jersey-jaxrs:${revSwaggerJersey}"
 }
 
 shadowJar {
