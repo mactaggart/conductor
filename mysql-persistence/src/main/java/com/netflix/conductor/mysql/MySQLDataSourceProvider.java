@@ -77,6 +77,7 @@ public class MySQLDataSourceProvider implements Provider<DataSource> {
 
         flyway.setDataSource(dataSource);
         flyway.setPlaceholderReplacement(false);
+        flyway.setBaselineOnMigrate(configuration.isFlywayBaselineOnMigrate());
         flyway.migrate();
     }
 }

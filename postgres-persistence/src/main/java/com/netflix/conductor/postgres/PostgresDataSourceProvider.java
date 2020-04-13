@@ -91,6 +91,7 @@ public class PostgresDataSourceProvider implements Provider<DataSource> {
         flyway.setLocations(Paths.get("db","migration_postgres").toString());
         flyway.setDataSource(dataSource);
         flyway.setPlaceholderReplacement(false);
+        flyway.setBaselineOnMigrate(configuration.isFlywayBaselineOnMigrate());
         flyway.migrate();
     }
 }

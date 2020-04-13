@@ -31,6 +31,9 @@ public interface PostgresConfiguration extends Configuration {
     String FLYWAY_ENABLED_PROPERTY_NAME = "flyway.enabled";
     boolean FLYWAY_ENABLED_DEFAULT_VALUE = true;
 
+    String FLYWAY_BASELINE_ON_MIGRATE = "flyway.baseline.on.migrate";
+    boolean FLYWAY_BASELINE_ON_MIGRATE_DEFAULT_VALUE = false;
+
     String FLYWAY_TABLE_PROPERTY_NAME = "flyway.table";
     Optional<String> FLYWAY_TABLE_DEFAULT_VALUE = Optional.empty();
 
@@ -71,6 +74,10 @@ public interface PostgresConfiguration extends Configuration {
 
     default boolean isFlywayEnabled() {
         return getBoolProperty(FLYWAY_ENABLED_PROPERTY_NAME, FLYWAY_ENABLED_DEFAULT_VALUE);
+    }
+
+    default boolean isFlywayBaselineOnMigrate() {
+        return getBoolProperty(FLYWAY_BASELINE_ON_MIGRATE, FLYWAY_BASELINE_ON_MIGRATE_DEFAULT_VALUE);
     }
 
     default Optional<String> getFlywayTable() {
