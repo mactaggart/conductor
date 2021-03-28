@@ -19,8 +19,8 @@ import java.util.Set;
 
 import static com.netflix.conductor.utility.TestUtils.getConstraintViolationMessages;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 public class TaskServiceTest {
 
@@ -139,8 +139,8 @@ public class TaskServiceTest {
     }
     @Test
     public void testAckTaskReceivedMissingWorkerId() {
-        String ack = taskService.ackTaskReceived("abc", null);
-        assertNotNull(ack);
+        boolean ack = taskService.ackTaskReceived("abc", null);
+        assertFalse(ack);
     }
 
     @Test(expected = ConstraintViolationException.class)

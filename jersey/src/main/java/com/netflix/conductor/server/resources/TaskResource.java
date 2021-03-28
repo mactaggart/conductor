@@ -102,7 +102,7 @@ public class TaskResource {
 
 	@POST
 	@ApiOperation("Update a task")
-	@Produces({MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON})
+	@Produces({MediaType.TEXT_PLAIN})
 	public String updateTask(TaskResult taskResult) {
 		return taskService.updateTask(taskResult);
 	}
@@ -111,7 +111,7 @@ public class TaskResource {
 	@Path("/{taskId}/ack")
 	@ApiOperation("Ack Task is received")
 	@Consumes({MediaType.WILDCARD})
-	public String ack(@PathParam("taskId") String taskId,
+	public boolean ack(@PathParam("taskId") String taskId,
 					  @QueryParam("workerid") String workerId) {
 		return taskService.ackTaskReceived(taskId, workerId);
 	}
