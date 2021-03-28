@@ -81,14 +81,14 @@ class WorkflowTestUtil {
         (0..20).collect { "integration_task_$it" }
                 .findAll { !getPersistedTaskDefinition(it).isPresent() }
                 .collect { new TaskDef(it, it, 1, 120) }
-                .forEach { metadataService.registerTaskDef([it]) }
+                .forEach { metadataService.registerTaskDefs([it]) }
 
         (0..4).collect { "integration_task_0_RT_$it" }
                 .findAll { !getPersistedTaskDefinition(it).isPresent() }
                 .collect { new TaskDef(it, it, 0, 120) }
-                .forEach { metadataService.registerTaskDef([it]) }
+                .forEach { metadataService.registerTaskDefs([it]) }
 
-        metadataService.registerTaskDef([new TaskDef('short_time_out', 'short_time_out', 1, 5)])
+        metadataService.registerTaskDefs([new TaskDef('short_time_out', 'short_time_out', 1, 5)])
 
         //This taskWithResponseTimeOut is required by the integration test which exercises the response time out scenarios
         TaskDef taskWithResponseTimeOut = new TaskDef()
@@ -148,7 +148,7 @@ class WorkflowTestUtil {
         eventTaskX.name = 'eventX'
         eventTaskX.timeoutSeconds = 1
 
-        metadataService.registerTaskDef(
+        metadataService.registerTaskDefs(
                 [taskWithResponseTimeOut, optionalTask, simpleSubWorkflowTask,
                  subWorkflowTask, waitTimeOutTask, userTask, eventTaskX,
                  rateLimitedTask, rateLimitedSimpleTask, concurrentExecutionLimitedTask]

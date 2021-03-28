@@ -193,7 +193,7 @@ class KafkaTaskSpec extends Specification {
         kafkaRequest["value"] = value
 
         templatedTask.inputTemplate["kafka_request"] = kafkaRequest
-        metadataService.registerTaskDef([templatedTask])
+        metadataService.registerTaskDefs([templatedTask])
 
         WorkflowDef templateWf = new WorkflowDef()
         templateWf.name = "template_kafka_workflow"

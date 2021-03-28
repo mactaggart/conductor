@@ -101,8 +101,8 @@ public class MetadataResourceTest {
         List<TaskDef> listOfTaskDefs = new ArrayList<>();
         listOfTaskDefs.add(taskDef);
 
-        metadataResource.registerTaskDef(listOfTaskDefs);
-        verify(mockMetadataService, times(1)).registerTaskDef(listOfTaskDefs);
+        metadataResource.registerTaskDefs(listOfTaskDefs);
+        verify(mockMetadataService, times(1)).registerTaskDefs(listOfTaskDefs);
     }
 
     @Test

@@ -75,7 +75,7 @@ public class WorkflowStatusPublisherIntegrationTest {
         task.setName("junit_task_1");
         task.setTimeoutSeconds(120);
         task.setRetryCount(1);
-        metadataService.registerTaskDef(Collections.singletonList(task));
+        metadataService.registerTaskDefs(Collections.singletonList(task));
     }
 
     @Test

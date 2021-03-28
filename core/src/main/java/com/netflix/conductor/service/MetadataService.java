@@ -31,7 +31,7 @@ public interface MetadataService {
     /**
      * @param taskDefinitions Task Definitions to register
      */
-    void registerTaskDef(@NotNull(message = "TaskDefList cannot be empty or null")
+    void registerTaskDefs(@NotNull(message = "TaskDefList cannot be empty or null")
                                 @Size(min=1, message = "TaskDefList is empty") List<@Valid TaskDef> taskDefinitions);
 
         /**

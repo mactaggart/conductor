@@ -846,7 +846,7 @@ class WorkflowAndTaskConfigurationSpec extends Specification {
         body['outputPath'] = '${workflow.input.outputPath}'
         httpRequest['body'] = body
         templatedTask.inputTemplate['http_request'] = httpRequest
-        metadataService.registerTaskDef(Arrays.asList(templatedTask))
+        metadataService.registerTaskDefs(Arrays.asList(templatedTask))
 
         and: "set a system property for STACK2"
         System.setProperty('STACK2', 'test_stack')

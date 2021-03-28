@@ -38,6 +38,7 @@ import com.netflix.conductor.dao.EventHandlerDAO;
 import com.netflix.conductor.dao.MetadataDAO;
 import com.netflix.conductor.interceptors.ServiceInterceptor;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -88,7 +89,7 @@ public class MetadataServiceTest{
     public void testRegisterTaskDefNoName() {
         TaskDef taskDef = new TaskDef();//name is null
         try{
-            metadataService.registerTaskDef(Collections.singletonList(taskDef));
+            metadataService.registerTaskDefs(Arrays.asList(taskDef));
         } catch (ConstraintViolationException ex){
             assertEquals(2, ex.getConstraintViolations().size());
             Set<String> messages = getConstraintViolationMessages(ex.getConstraintViolations());
@@ -103,7 +104,7 @@ public class MetadataServiceTest{
     public void testRegisterTaskDefNull() {
         try{
             //noinspection ConstantConditions
-            metadataService.registerTaskDef(null);
+            metadataService.registerTaskDefs(null);
         } catch (ConstraintViolationException ex) {
             assertEquals(1, ex.getConstraintViolations().size());
             Set<String> messages = getConstraintViolationMessages(ex.getConstraintViolations());
@@ -120,7 +121,7 @@ public class MetadataServiceTest{
             taskDef.setName("somename");
             taskDef.setOwnerEmail("sample@test.com");
             taskDef.setResponseTimeoutSeconds(0);//wrong
-            metadataService.registerTaskDef(Collections.singletonList(taskDef));
+            metadataService.registerTaskDefs(Arrays.asList(taskDef));
         } catch (ConstraintViolationException ex) {
             assertEquals(1, ex.getConstraintViolations().size());
             Set<String> messages = getConstraintViolationMessages(ex.getConstraintViolations());
@@ -178,12 +179,12 @@ public class MetadataServiceTest{
     }
 
     @Test
-    public void testRegisterTaskDef() {
+    public void testRegisterTaskDefs() {
         TaskDef taskDef = new TaskDef();
         taskDef.setName("somename");
         taskDef.setOwnerEmail("sample@test.com");
         taskDef.setResponseTimeoutSeconds(60 * 60);//wrong
-        metadataService.registerTaskDef(Collections.singletonList(taskDef));
+        metadataService.registerTaskDefs(Arrays.asList(taskDef));
         verify(metadataDAO, times(1)).createTaskDef(any(TaskDef.class));
     }
 

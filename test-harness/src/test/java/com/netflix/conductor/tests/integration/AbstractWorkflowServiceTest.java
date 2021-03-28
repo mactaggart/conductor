@@ -195,7 +195,7 @@ public abstract class AbstractWorkflowServiceTest {
             task.setName(name);
             task.setTimeoutSeconds(120);
             task.setRetryCount(RETRY_COUNT);
-            metadataService.registerTaskDef(Collections.singletonList(task));
+            metadataService.registerTaskDefs(Collections.singletonList(task));
         }
 
         for (int i = 0; i < 5; i++) {
@@ -209,14 +209,14 @@ public abstract class AbstractWorkflowServiceTest {
             task.setName(name);
             task.setTimeoutSeconds(120);
             task.setRetryCount(0);
-            metadataService.registerTaskDef(Collections.singletonList(task));
+            metadataService.registerTaskDefs(Collections.singletonList(task));
         }
 
         TaskDef task = new TaskDef();
         task.setName("short_time_out");
         task.setTimeoutSeconds(5);
         task.setRetryCount(RETRY_COUNT);
-        metadataService.registerTaskDef(Collections.singletonList(task));
+        metadataService.registerTaskDefs(Collections.singletonList(task));
 
         WorkflowDef def = new WorkflowDef();
         def.setName(LINEAR_WORKFLOW_T1_T2);
@@ -333,7 +333,7 @@ public abstract class AbstractWorkflowServiceTest {
         body.put("outputPath", "${workflow.input.outputPath}");
         httpRequest.put("body", body);
         templatedTask.getInputTemplate().put("http_request", httpRequest);
-        metadataService.registerTaskDef(Arrays.asList(templatedTask));
+        metadataService.registerTaskDefs(Arrays.asList(templatedTask));
 
         WorkflowDef templateWf = new WorkflowDef();
         templateWf.setName("template_workflow");
@@ -506,7 +506,7 @@ public abstract class AbstractWorkflowServiceTest {
         value.put("outputPath", "${workflow.input.outputPath}");
         kafkaRequest.put("value", value);
         templatedTask.getInputTemplate().put("kafka_request", kafkaRequest);
-        metadataService.registerTaskDef(Arrays.asList(templatedTask));
+        metadataService.registerTaskDefs(Arrays.asList(templatedTask));
 
         WorkflowDef templateWf = new WorkflowDef();
 
@@ -659,7 +659,7 @@ public abstract class AbstractWorkflowServiceTest {
         taskDef.setRetryCount(1);
         taskDef.setTimeoutPolicy(TimeoutPolicy.RETRY);
         taskDef.setRetryDelaySeconds(10);
-        metadataService.registerTaskDef(Arrays.asList(taskDef));
+        metadataService.registerTaskDefs(Arrays.asList(taskDef));
 
         TaskDef taskDef2 = new TaskDef();
         taskDef2.setName("http0");
@@ -667,7 +667,7 @@ public abstract class AbstractWorkflowServiceTest {
         taskDef2.setRetryCount(1);
         taskDef2.setTimeoutPolicy(TimeoutPolicy.RETRY);
         taskDef2.setRetryDelaySeconds(10);
-        metadataService.registerTaskDef(Arrays.asList(taskDef2));
+        metadataService.registerTaskDefs(Arrays.asList(taskDef2));
 
         TaskDef taskDef1 = new TaskDef();
         taskDef1.setName("http2");
@@ -675,7 +675,7 @@ public abstract class AbstractWorkflowServiceTest {
         taskDef1.setRetryCount(1);
         taskDef1.setTimeoutPolicy(TimeoutPolicy.RETRY);
         taskDef1.setRetryDelaySeconds(10);
-        metadataService.registerTaskDef(Arrays.asList(taskDef1));
+        metadataService.registerTaskDefs(Arrays.asList(taskDef1));
 
         Map<String, Object> input = new HashMap<>();
         String workflowId = startOrLoadWorkflowExecution(DO_WHILE_WF + "_1", 1, "looptest", input, null, null);
@@ -731,7 +731,7 @@ public abstract class AbstractWorkflowServiceTest {
         taskDef.setRetryCount(1);
         taskDef.setTimeoutPolicy(TimeoutPolicy.RETRY);
         taskDef.setRetryDelaySeconds(10);
-        metadataService.registerTaskDef(Arrays.asList(taskDef));
+        metadataService.registerTaskDefs(Arrays.asList(taskDef));
 
         TaskDef taskDef2 = new TaskDef();
         taskDef2.setName("http0");
@@ -739,7 +739,7 @@ public abstract class AbstractWorkflowServiceTest {
         taskDef2.setRetryCount(1);
         taskDef2.setTimeoutPolicy(TimeoutPolicy.RETRY);
         taskDef2.setRetryDelaySeconds(10);
-        metadataService.registerTaskDef(Arrays.asList(taskDef2));
+        metadataService.registerTaskDefs(Arrays.asList(taskDef2));
 
         TaskDef taskDef1 = new TaskDef();
         taskDef1.setName("http2");
@@ -747,7 +747,7 @@ public abstract class AbstractWorkflowServiceTest {
         taskDef1.setRetryCount(1);
         taskDef1.setTimeoutPolicy(TimeoutPolicy.RETRY);
         taskDef1.setRetryDelaySeconds(10);
-        metadataService.registerTaskDef(Arrays.asList(taskDef1));
+        metadataService.registerTaskDefs(Arrays.asList(taskDef1));
 
         TaskDef taskDef3 = new TaskDef();
         taskDef1.setName("http3");
@@ -755,7 +755,7 @@ public abstract class AbstractWorkflowServiceTest {
         taskDef1.setRetryCount(1);
         taskDef1.setTimeoutPolicy(TimeoutPolicy.RETRY);
         taskDef1.setRetryDelaySeconds(10);
-        metadataService.registerTaskDef(Arrays.asList(taskDef3));
+        metadataService.registerTaskDefs(Arrays.asList(taskDef3));
 
         Map<String, Object> input = new HashMap<>();
         String workflowId = startOrLoadWorkflowExecution(DO_WHILE_WF + "_2", 1, "looptest", input, null, null);
@@ -860,7 +860,7 @@ public abstract class AbstractWorkflowServiceTest {
         taskDef.setRetryCount(1);
         taskDef.setTimeoutPolicy(TimeoutPolicy.RETRY);
         taskDef.setRetryDelaySeconds(10);
-        metadataService.registerTaskDef(Arrays.asList(taskDef));
+        metadataService.registerTaskDefs(Arrays.asList(taskDef));
 
         TaskDef taskDef2 = new TaskDef();
         taskDef2.setName("http0");
@@ -868,7 +868,7 @@ public abstract class AbstractWorkflowServiceTest {
         taskDef2.setRetryCount(1);
         taskDef2.setTimeoutPolicy(TimeoutPolicy.RETRY);
         taskDef2.setRetryDelaySeconds(10);
-        metadataService.registerTaskDef(Arrays.asList(taskDef2));
+        metadataService.registerTaskDefs(Arrays.asList(taskDef2));
 
         TaskDef taskDef1 = new TaskDef();
         taskDef1.setName("http2");
@@ -876,7 +876,7 @@ public abstract class AbstractWorkflowServiceTest {
         taskDef1.setRetryCount(1);
         taskDef1.setTimeoutPolicy(TimeoutPolicy.RETRY);
         taskDef1.setRetryDelaySeconds(10);
-        metadataService.registerTaskDef(Arrays.asList(taskDef1));
+        metadataService.registerTaskDefs(Arrays.asList(taskDef1));
 
         Map<String, Object> input = new HashMap<>();
         String workflowId = startOrLoadWorkflowExecution(DO_WHILE_WF + "_3", 1, "looptest", input, null, null);
@@ -944,7 +944,7 @@ public abstract class AbstractWorkflowServiceTest {
         taskDef.setRetryCount(1);
         taskDef.setTimeoutPolicy(TimeoutPolicy.RETRY);
         taskDef.setRetryDelaySeconds(10);
-        metadataService.registerTaskDef(Arrays.asList(taskDef));
+        metadataService.registerTaskDefs(Arrays.asList(taskDef));
 
         TaskDef taskDef2 = new TaskDef();
         taskDef2.setName("http0");
@@ -952,7 +952,7 @@ public abstract class AbstractWorkflowServiceTest {
         taskDef2.setRetryCount(1);
         taskDef2.setTimeoutPolicy(TimeoutPolicy.RETRY);
         taskDef2.setRetryDelaySeconds(10);
-        metadataService.registerTaskDef(Arrays.asList(taskDef2));
+        metadataService.registerTaskDefs(Arrays.asList(taskDef2));
 
         TaskDef taskDef1 = new TaskDef();
         taskDef1.setName("http2");
@@ -960,7 +960,7 @@ public abstract class AbstractWorkflowServiceTest {
         taskDef1.setRetryCount(1);
         taskDef1.setTimeoutPolicy(TimeoutPolicy.RETRY);
         taskDef1.setRetryDelaySeconds(10);
-        metadataService.registerTaskDef(Arrays.asList(taskDef1));
+        metadataService.registerTaskDefs(Arrays.asList(taskDef1));
 
         Map<String, Object> input = new HashMap<>();
         String workflowId = startOrLoadWorkflowExecution(DO_WHILE_WF + "_3", 1, "looptest", input, null, null);
@@ -1895,7 +1895,7 @@ public abstract class AbstractWorkflowServiceTest {
 	        taskDef.setRetryCount(1);
 	        taskDef.setTimeoutPolicy(TimeoutPolicy.RETRY);
 	        taskDef.setRetryDelaySeconds(10);
-	        metadataService.registerTaskDef(Arrays.asList(taskDef));
+	        metadataService.registerTaskDefs(Arrays.asList(taskDef));
         }
 
         Map<String, Object> inputParams1 = new HashMap<>();
@@ -1952,7 +1952,7 @@ public abstract class AbstractWorkflowServiceTest {
 	            taskDef2.setRetryCount(3);
 	            taskDef2.setTimeoutPolicy(TimeoutPolicy.RETRY);
 	            taskDef2.setRetryDelaySeconds(10);
-	            metadataService.registerTaskDef(Arrays.asList(taskDef2));
+	            metadataService.registerTaskDefs(Arrays.asList(taskDef2));
         	}
             WorkflowTask loopTask2 = new WorkflowTask();
             loopTask2.setType(TaskType.DO_WHILE.name());
@@ -5398,7 +5398,7 @@ public abstract class AbstractWorkflowServiceTest {
         taskDef.setRetryCount(1);
         taskDef.setTimeoutPolicy(TimeoutPolicy.RETRY);
         taskDef.setRetryDelaySeconds(10);
-        metadataService.registerTaskDef(Collections.singletonList(taskDef));
+        metadataService.registerTaskDefs(Collections.singletonList(taskDef));
 
         WorkflowDef workflowDef = new WorkflowDef();
         workflowDef.setName("test_wait_timeout");
@@ -5620,7 +5620,7 @@ public abstract class AbstractWorkflowServiceTest {
         taskDef.setName("eventX");
         taskDef.setTimeoutSeconds(1);
 
-        metadataService.registerTaskDef(Collections.singletonList(taskDef));
+        metadataService.registerTaskDefs(Collections.singletonList(taskDef));
 
         WorkflowDef workflowDef = new WorkflowDef();
         workflowDef.setName("test_event");
@@ -6120,7 +6120,7 @@ public abstract class AbstractWorkflowServiceTest {
         taskDef.setTimeoutSeconds(10);
         metadataService.updateTaskDef(taskDef);
 
-        metadataService.registerTaskDef(Collections.singletonList(taskDef));
+        metadataService.registerTaskDefs(Collections.singletonList(taskDef));
 
         WorkflowDef workflowDef = new WorkflowDef();
         workflowDef.setName("test_execution_times_wf");
@@ -6461,7 +6461,7 @@ public abstract class AbstractWorkflowServiceTest {
         task.setTimeoutPolicy(TimeoutPolicy.RETRY);
         task.setRetryDelaySeconds(0);
 
-        metadataService.registerTaskDef(Collections.singletonList(task));
+        metadataService.registerTaskDefs(Collections.singletonList(task));
 
         WorkflowDef def = new WorkflowDef();
         def.setName(WORKFLOW_WITH_OPTIONAL_TASK);
@@ -7059,7 +7059,7 @@ public abstract class AbstractWorkflowServiceTest {
         taskDef.setRetryCount(1);
         taskDef.setTimeoutPolicy(TimeoutPolicy.RETRY);
         taskDef.setRetryDelaySeconds(10);
-        metadataService.registerTaskDef(Collections.singletonList(taskDef));
+        metadataService.registerTaskDefs(Collections.singletonList(taskDef));
 
         WorkflowTask userTask = new WorkflowTask();
         userTask.setName(taskDef.getName());
@@ -7111,7 +7111,7 @@ public abstract class AbstractWorkflowServiceTest {
         task.setRetryCount(RETRY_COUNT);
         task.setRetryDelaySeconds(0);
         task.setResponseTimeoutSeconds(10);
-        metadataService.registerTaskDef(Collections.singletonList(task));
+        metadataService.registerTaskDefs(Collections.singletonList(task));
 
         WorkflowDef def = new WorkflowDef();
         def.setName("RTOWF");
@@ -7228,7 +7228,7 @@ public abstract class AbstractWorkflowServiceTest {
         TaskDef task = new TaskDef();
         task.setName(taskName);
         task.setRetryCount(0);
-        metadataService.registerTaskDef(Collections.singletonList(task));
+        metadataService.registerTaskDefs(Collections.singletonList(task));
 
         // sub workflow
         WorkflowDef subworkflow_def = new WorkflowDef();

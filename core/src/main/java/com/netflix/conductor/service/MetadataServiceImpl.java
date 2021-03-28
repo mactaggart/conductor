@@ -60,7 +60,7 @@ public class MetadataServiceImpl implements MetadataService {
      * @param taskDefinitions Task Definitions to register
      */
     @Service
-    public void registerTaskDef(List<TaskDef> taskDefinitions) {
+    public void registerTaskDefs(List<TaskDef> taskDefinitions) {
         for (TaskDef taskDefinition : taskDefinitions) {
             taskDefinition.setCreatedBy(WorkflowContext.get().getClientApp());
             taskDefinition.setCreateTime(System.currentTimeMillis());

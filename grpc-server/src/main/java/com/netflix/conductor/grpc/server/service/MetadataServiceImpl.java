@@ -72,7 +72,7 @@ public class MetadataServiceImpl extends MetadataServiceGrpc.MetadataServiceImpl
 
     @Override
     public void createTasks(MetadataServicePb.CreateTasksRequest req, StreamObserver<MetadataServicePb.CreateTasksResponse> response) {
-        service.registerTaskDef(
+        service.registerTaskDefs(
                 req.getDefsList().stream().map(PROTO_MAPPER::fromProto).collect(Collectors.toList())
         );
         response.onNext(MetadataServicePb.CreateTasksResponse.getDefaultInstance());
