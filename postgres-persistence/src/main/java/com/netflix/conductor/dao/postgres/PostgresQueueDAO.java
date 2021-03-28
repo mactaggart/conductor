@@ -23,6 +23,7 @@ import com.netflix.conductor.dao.QueueDAO;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.sql.DataSource;
+import java.sql.Array;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -203,10 +204,11 @@ public class PostgresQueueDAO extends PostgresBaseDAO implements QueueDAO {
             if (messages.size() == 0) {
                 return 0;
             }
-            String msgIdsString = String.join(",", messages);
 
-            final String PROCESS_UNACKS = "UPDATE queue_message SET popped = false WHERE message_id IN (?)";
-            Integer unacked = query(tx, PROCESS_UNACKS, q -> q.addParameter(msgIdsString).executeUpdate());
+            Array msgIds = tx.createArrayOf("VARCHAR", messages.toArray());
+
+            final String PROCESS_UNACKS = "UPDATE queue_message SET popped = false WHERE message_id ANY (?)";
+            Integer unacked = query(tx, PROCESS_UNACKS, q -> q.addParameter(msgIds).executeUpdate());
             if (unacked > 0) {
                 logger.debug("Unacked {} messages: {} from all queues", unacked, messages);
             }

@@ -21,6 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -91,6 +92,10 @@ public class Query implements AutoCloseable {
         }
 
         return String.join(", ", questions);
+    }
+
+    public Query addParameter(final Array value) {
+        return addParameterInternal((ps, idx) -> ps.setArray(idx, value));
     }
 
     public Query addParameter(final String value) {
